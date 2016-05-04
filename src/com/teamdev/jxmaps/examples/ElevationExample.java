@@ -3,7 +3,7 @@
  * Use is subject to Apache 2.0 license terms.
  */
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.ElevationCallback;
@@ -31,11 +31,11 @@ import java.awt.*;
  *
  * @author Vitaly Eremenko
  */
-public class ElevationSample extends MapView {
+public class ElevationExample extends MapView {
 
     InfoWindow infoWindow;
 
-    public ElevationSample() {
+    public ElevationExample() {
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
         setOnMapReadyHandler(new MapReadyHandler() {
@@ -115,9 +115,9 @@ public class ElevationSample extends MapView {
     }
 
     public static void main(String[] args) {
-        final ElevationSample sample = new ElevationSample();
+        final ElevationExample sample = new ElevationExample();
 
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Elevation");
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(sample, BorderLayout.CENTER);

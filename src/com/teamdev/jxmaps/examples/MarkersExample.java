@@ -4,7 +4,7 @@
  */
 
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.InfoWindow;
@@ -27,8 +27,8 @@ import java.awt.*;
  *
  * @author Vitaly Eremenko
  */
-public class MarkersSample extends MapView {
-    public MarkersSample() {
+public class MarkersExample extends MapView {
+    public MarkersExample() {
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
         setOnMapReadyHandler(new MapReadyHandler() {
@@ -80,9 +80,9 @@ public class MarkersSample extends MapView {
     }
 
     public static void main(String[] args) {
-        final MarkersSample sample = new MarkersSample();
+        final MarkersExample sample = new MarkersExample();
 
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Markers");
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(sample, BorderLayout.CENTER);

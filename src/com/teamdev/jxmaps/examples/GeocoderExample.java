@@ -3,7 +3,7 @@
  * Use is subject to Apache 2.0 license terms.
  */
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.GeocoderCallback;
@@ -34,13 +34,13 @@ import java.awt.event.ActionListener;
  * @author Vitaly Eremenko
  * @author Sergei Piletsky
  */
-public class GeocoderSample extends MapView {
+public class GeocoderExample extends MapView {
 
     private static final String INITIAL_LOCATION = "Beijing";
 
     private OptionsWindow optionsWindow;
 
-    public GeocoderSample() {
+    public GeocoderExample() {
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
         setOnMapReadyHandler(new MapReadyHandler() {
@@ -86,8 +86,8 @@ public class GeocoderSample extends MapView {
                 searchField.setUI(new SearchFieldUI(searchField));
 
                 final JButton searchButton = new JButton();
-                searchButton.setIcon(new ImageIcon(MapOptionsSample.class.getResource("res/search.png")));
-                searchButton.setRolloverIcon(new ImageIcon(MapOptionsSample.class.getResource("res/search_hover.png")));
+                searchButton.setIcon(new ImageIcon(MapOptionsExample.class.getResource("res/search.png")));
+                searchButton.setRolloverIcon(new ImageIcon(MapOptionsExample.class.getResource("res/search_hover.png")));
                 searchButton.setBorder(BorderFactory.createEmptyBorder());
                 searchButton.setUI(new BasicButtonUI());
                 searchButton.setOpaque(false);
@@ -114,7 +114,7 @@ public class GeocoderSample extends MapView {
                     Point newLocation = parentFrame.getContentPane().getLocationOnScreen();
                     newLocation.translate(56, 11);
                     contentWindow.setLocation(newLocation);
-                    contentWindow.setSize(350, 40);
+                    contentWindow.setSize(340, 40);
                 }
             }
         };
@@ -194,9 +194,9 @@ public class GeocoderSample extends MapView {
 
 
     public static void main(String[] args) {
-        final GeocoderSample mapView = new GeocoderSample();
+        final GeocoderExample mapView = new GeocoderExample();
 
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Geocoder");
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(mapView, BorderLayout.CENTER);

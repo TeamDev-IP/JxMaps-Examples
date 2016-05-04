@@ -4,7 +4,7 @@
  */
 
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.swing.MapView;
 
@@ -16,7 +16,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 /**
- * Base class for windows with options. Some samples can have options.
+ * Base class for windows with options. Some examples can have options.
  *
  * @author Vitaly Eremenko
  * @author Sergei Piletsky

@@ -3,7 +3,7 @@
  * Use is subject to Apache 2.0 license terms.
  */
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.DirectionsRequest;
@@ -32,7 +32,7 @@ import java.awt.event.MouseEvent;
  *
  * @author Vitaly Eremenko
  */
-public class DirectionsSample extends MapView implements ControlPanel {
+public class DirectionsExample extends MapView implements ControlPanel {
 
     private static final Color FOREGROUND_COLOR = new Color(0xBB, 0xDE, 0xFB);
 
@@ -41,7 +41,14 @@ public class DirectionsSample extends MapView implements ControlPanel {
 
     private JPanel controlPanel;
 
-    public DirectionsSample() {
+    public DirectionsExample() {
+        controlPanel = new JPanel();
+
+        fromField = new JTextField("Chicago, il");
+        toField = new JTextField("Winona, az");
+
+        configureControlPanel();
+
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
         setOnMapReadyHandler(new MapReadyHandler() {
@@ -70,25 +77,6 @@ public class DirectionsSample extends MapView implements ControlPanel {
                 }
             }
         });
-
-        controlPanel = new JPanel(new GridLayout(3, 2));
-
-        fromField = new JTextField("Chicago, il");
-        toField = new JTextField("Winona, az");
-
-        controlPanel.add(new JLabel("from:"));
-        controlPanel.add(fromField);
-        controlPanel.add(new JLabel("to:"));
-        controlPanel.add(toField);
-
-        JButton searchButton = new JButton("Search");
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calculateDirection();
-            }
-        });
-        controlPanel.add(searchButton);
     }
 
     @Override
@@ -98,7 +86,6 @@ public class DirectionsSample extends MapView implements ControlPanel {
 
     @Override
     public void configureControlPanel() {
-        controlPanel.removeAll();
         controlPanel.setBackground(Color.white);
         controlPanel.setLayout(new BorderLayout());
 
@@ -127,10 +114,10 @@ public class DirectionsSample extends MapView implements ControlPanel {
         fromField.addActionListener(listener);
         toField.addActionListener(listener);
 
-        JLabel fromIcon = new JLabel(new ImageIcon(DirectionsSample.class.getResource("res/from.png")));
-        JLabel dotsIcon = new JLabel(new ImageIcon(DirectionsSample.class.getResource("res/dots.png")));
-        JLabel toIcon = new JLabel(new ImageIcon(DirectionsSample.class.getResource("res/to.png")));
-        JLabel changeIcon = new JLabel(new ImageIcon(DirectionsSample.class.getResource("res/change.png")));
+        JLabel fromIcon = new JLabel(new ImageIcon(DirectionsExample.class.getResource("res/from.png")));
+        JLabel dotsIcon = new JLabel(new ImageIcon(DirectionsExample.class.getResource("res/dots.png")));
+        JLabel toIcon = new JLabel(new ImageIcon(DirectionsExample.class.getResource("res/to.png")));
+        JLabel changeIcon = new JLabel(new ImageIcon(DirectionsExample.class.getResource("res/change.png")));
         changeIcon.setToolTipText("Reverse starting point and destination");
         changeIcon.setCursor(new Cursor(Cursor.HAND_CURSOR));
         changeIcon.addMouseListener(new MouseAdapter() {
@@ -149,7 +136,7 @@ public class DirectionsSample extends MapView implements ControlPanel {
         demoControlPanel.add(dotsIcon, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                 GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(2, 33, 0, 0), 0, 0));
         demoControlPanel.add(toIcon, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
-                GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(4, 30, 25, 0), 0, 0));
+                GridBagConstraints.NORTHWEST, GridBagConstraints.NONE, new Insets(6, 30, 25, 0), 0, 0));
 
         demoControlPanel.add(fromField, new GridBagConstraints(1, 0, 1, 1, 1.0, 0.0,
                 GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL, new Insets(19, 22, 0, 0), 0, 0));
@@ -164,7 +151,7 @@ public class DirectionsSample extends MapView implements ControlPanel {
 
     @Override
     public int getPreferredHeight() {
-        return 173;
+        return 169;
     }
 
     class UnderscoreBorder extends AbstractBorder {
@@ -206,22 +193,37 @@ public class DirectionsSample extends MapView implements ControlPanel {
                     // Drawing the calculated route on the map
                     map.getDirectionsRenderer().setDirections(result);
                 } else {
-                    JOptionPane.showMessageDialog(DirectionsSample.this, "Error. Route cannot be calculated.\nPlease correct input data.");
+                    JOptionPane.showMessageDialog(DirectionsExample.this, "Error. Route cannot be calculated.\nPlease correct input data.");
                 }
             }
         });
     }
 
+    private static void loadAndRegisterCustomFonts() {
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, DirectionsExample.class.getResourceAsStream("res/Roboto-Bold.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, DirectionsExample.class.getResourceAsStream("res/Roboto-Medium.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, DirectionsExample.class.getResourceAsStream("res/Roboto-Regular.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, DirectionsExample.class.getResourceAsStream("res/Roboto-Thin.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, DirectionsExample.class.getResourceAsStream("res/Roboto-Light.ttf")));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        final DirectionsSample sample = new DirectionsSample();
+        loadAndRegisterCustomFonts();
+
+        JFrame frame = new JFrame("Directions");
+        final DirectionsExample sample = new DirectionsExample();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(sample, BorderLayout.CENTER);
         frame.setSize(700, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        OptionsWindow optionsWindow = new OptionsWindow(sample, new Dimension(200, 100)) {
+        OptionsWindow optionsWindow = new OptionsWindow(sample, new Dimension(300, 100)) {
             @Override
             public void initContent(JWindow contentWindow) {
                 contentWindow.add(sample.controlPanel);

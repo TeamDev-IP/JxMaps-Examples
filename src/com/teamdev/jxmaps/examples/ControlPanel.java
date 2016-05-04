@@ -4,7 +4,7 @@
  */
 
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import javax.swing.*;
 

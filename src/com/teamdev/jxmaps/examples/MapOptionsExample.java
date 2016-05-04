@@ -4,7 +4,7 @@
  */
 
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.LatLng;
@@ -30,7 +30,7 @@ import java.awt.event.ActionListener;
  * @author Vitaly Eremenko
  * @author Sergey Piletsky
  */
-public class MapOptionsSample extends MapView implements ControlPanel  {
+public class MapOptionsExample extends MapView implements ControlPanel  {
     private static final Color FOREGROUND_COLOR = new Color(0xBB, 0xDE, 0xFB);
     private static final Color FOREGROUND_COLOR_SELECTED = new Color(0xFE, 0xFE, 0xFE);
 
@@ -40,7 +40,7 @@ public class MapOptionsSample extends MapView implements ControlPanel  {
     private JCheckBox draggingCheck;
     private JCheckBox scrollWheelCheck;
 
-    public MapOptionsSample() {
+    public MapOptionsExample() {
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
         setOnMapReadyHandler(new MapReadyHandler() {
@@ -124,10 +124,7 @@ public class MapOptionsSample extends MapView implements ControlPanel  {
             }
         });
 
-        controlPanel.add(defaultUiCheck);
-        controlPanel.add(dblClickCheck);
-        controlPanel.add(draggingCheck);
-        controlPanel.add(scrollWheelCheck);
+        configureControlPanel();
     }
 
     @Override
@@ -163,7 +160,7 @@ public class MapOptionsSample extends MapView implements ControlPanel  {
 
     @Override
     public int getPreferredHeight() {
-        return 207;
+        return 210;
     }
 
     private void customizeCheckBox(final JCheckBox checkBox) {
@@ -178,8 +175,8 @@ public class MapOptionsSample extends MapView implements ControlPanel  {
         checkBox.setFont(robotoPlain13);
         checkBox.setForeground(checkBox.isSelected()?  FOREGROUND_COLOR_SELECTED : FOREGROUND_COLOR);
         checkBox.setOpaque(false);
-        checkBox.setIcon(new ImageIcon(MapOptionsSample.class.getResource("res/checkbox_0.png")));
-        checkBox.setSelectedIcon(new ImageIcon(MapOptionsSample.class.getResource("res/checkbox_1.png")));
+        checkBox.setIcon(new ImageIcon(MapOptionsExample.class.getResource("res/checkbox_0.png")));
+        checkBox.setSelectedIcon(new ImageIcon(MapOptionsExample.class.getResource("res/checkbox_1.png")));
         checkBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -223,16 +220,32 @@ public class MapOptionsSample extends MapView implements ControlPanel  {
         controlPanel.repaint();
     }
 
+    private static void loadAndRegisterCustomFonts() {
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, MapOptionsExample.class.getResourceAsStream("res/Roboto-Bold.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, MapOptionsExample.class.getResourceAsStream("res/Roboto-Medium.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, MapOptionsExample.class.getResourceAsStream("res/Roboto-Regular.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, MapOptionsExample.class.getResourceAsStream("res/Roboto-Thin.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, MapOptionsExample.class.getResourceAsStream("res/Roboto-Light.ttf")));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        final MapOptionsSample sample = new MapOptionsSample();
+        loadAndRegisterCustomFonts();
+
+        JFrame frame = new JFrame("Map Options");
+        final MapOptionsExample sample = new MapOptionsExample();
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(sample, BorderLayout.CENTER);
         frame.setSize(700, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        OptionsWindow optionsWindow = new OptionsWindow(sample, new Dimension(200, 100)) {
+        OptionsWindow optionsWindow = new OptionsWindow(sample, new Dimension(300, 140)) {
             @Override
             public void initContent(JWindow contentWindow) {
                 contentWindow.add(sample.controlPanel);

@@ -4,7 +4,7 @@
  */
 
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.GeocoderCallback;
@@ -52,7 +52,7 @@ import java.io.InputStream;
  * @author Vitaly Eremenko
  * @author Sergei Piletsky
  */
-public class PlacesSearchSample extends MapView implements EditableTextControlPanel  {
+public class PlacesSearchExample extends MapView implements EditableTextControlPanel  {
     static final MapViewOptions mapOptions;
 
     static {
@@ -61,6 +61,8 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
         // enabling usage of places library
         mapOptions.importPlaces();
     }
+
+    private final boolean standalone;
 
     private static String convertImageStreamToString(InputStream is) {
         String result;
@@ -80,7 +82,7 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
     }
 
     private static String getBase64ImageString(String imageName) {
-        InputStream is = PlacesSearchSample.class.getResourceAsStream("res/" + imageName);
+        InputStream is = PlacesSearchExample.class.getResourceAsStream("res/" + imageName);
         return convertImageStreamToString(is);
     }
 
@@ -208,8 +210,13 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
         }
     }
 
-    public PlacesSearchSample() {
+    public PlacesSearchExample() {
+        this(false);
+    }
+
+    public PlacesSearchExample(boolean standalone) {
         super(mapOptions);
+        this.standalone = standalone;
 
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
@@ -226,8 +233,7 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
         controlPanel = new JPanel();
 
         addressEdit = new JTextField("London, Baker str., 221b");
-        JButton searchButton = new JButton("Search");
-        searchButton.addActionListener(new ActionListener() {
+        addressEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 geocodePlace(addressEdit.getText());
@@ -242,11 +248,7 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
             }
         });
 
-        controlPanel.setLayout(new GridLayout(3,1));
-
-        controlPanel.add(addressEdit);
-        controlPanel.add(searchButton);
-        controlPanel.add(placesList);
+        configureControlPanel();
     }
 
     @Override
@@ -256,7 +258,7 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
 
     @Override
     public int getPreferredHeight() {
-        return 232;
+        return 233;
     }
 
     class PlaceOption {
@@ -323,12 +325,10 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
         controlPanel.setBackground(Color.white);
         controlPanel.setLayout(new BorderLayout());
 
-        JPanel demoControlPanel = new JPanel(new GridBagLayout());
-        demoControlPanel.setBackground(Color.white);
         placesList = new JList<PlaceOption>(new PlaceOption[]{
-                new PlaceOption(new ImageIcon(PlacesSearchSample.class.getResource("res/restaurants.png")), "Restaurants"),
-                new PlaceOption(new ImageIcon(PlacesSearchSample.class.getResource("res/hotels.png")), "Hotels"),
-                new PlaceOption(new ImageIcon(PlacesSearchSample.class.getResource("res/bars_and_pubs.png")), "Bars and pubs"),
+                new PlaceOption(new ImageIcon(PlacesSearchExample.class.getResource("res/restaurants.png")), "Restaurants"),
+                new PlaceOption(new ImageIcon(PlacesSearchExample.class.getResource("res/hotels.png")), "Hotels"),
+                new PlaceOption(new ImageIcon(PlacesSearchExample.class.getResource("res/bars_and_pubs.png")), "Bars and pubs"),
         });
 
         placesList.setCellRenderer(new PlaceOptionsRenderer());
@@ -339,9 +339,13 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
             }
         });
         placesList.setOpaque(false);
+        placesList.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        controlPanel.add(placesList);
-        controlPanel.add(demoControlPanel, BorderLayout.NORTH);
+        if (standalone) {
+            controlPanel.add(addressEdit, BorderLayout.NORTH);
+        }
+
+        controlPanel.add(placesList, BorderLayout.CENTER);
     }
 
     @Override
@@ -489,10 +493,25 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
         geocodePlace(addressEdit.getText());
     }
 
-    public static void main(String[] args) {
-        final PlacesSearchSample sample = new PlacesSearchSample();
+    private static void loadAndRegisterCustomFonts() {
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, PlacesSearchExample.class.getResourceAsStream("res/Roboto-Bold.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, PlacesSearchExample.class.getResourceAsStream("res/Roboto-Medium.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, PlacesSearchExample.class.getResourceAsStream("res/Roboto-Regular.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, PlacesSearchExample.class.getResourceAsStream("res/Roboto-Thin.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, PlacesSearchExample.class.getResourceAsStream("res/Roboto-Light.ttf")));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-        JFrame frame = new JFrame();
+    public static void main(String[] args) {
+        loadAndRegisterCustomFonts();
+
+        final PlacesSearchExample sample = new PlacesSearchExample(true);
+
+        JFrame frame = new JFrame("Places Search");
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(sample, BorderLayout.CENTER);
@@ -500,7 +519,7 @@ public class PlacesSearchSample extends MapView implements EditableTextControlPa
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        new OptionsWindow(sample, new Dimension(350, 150)) {
+        new OptionsWindow(sample, new Dimension(350, 200)) {
             @Override
             public void initContent(JWindow contentWindow) {
                 contentWindow.add(sample.controlPanel);

@@ -3,7 +3,7 @@
  * Use is subject to Apache 2.0 license terms.
  */
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.LatLng;
@@ -29,9 +29,9 @@ import java.awt.*;
  *
  * @author Vitaly Eremenko
  */
-public class StyledMapSample extends MapView {
+public class StyledMapExample extends MapView {
 
-    public StyledMapSample() {
+    public StyledMapExample() {
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
         setOnMapReadyHandler(new MapReadyHandler() {
@@ -137,9 +137,9 @@ public class StyledMapSample extends MapView {
     }
 
     public static void main(String[] args) {
-        final StyledMapSample mapView = new StyledMapSample();
+        final StyledMapExample mapView = new StyledMapExample();
 
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Styled map");
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(mapView, BorderLayout.CENTER);

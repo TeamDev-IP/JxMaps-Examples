@@ -2,7 +2,7 @@
  * Copyright (c) 2000-2016 TeamDev Ltd. All rights reserved.
  * Use is subject to Apache 2.0 license terms.
  */
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.InfoWindow;
@@ -25,7 +25,7 @@ import java.io.InputStream;
  *
  * @author Vitaly Eremenko
  */
-public class InfoWindowSample extends MapView {
+public class InfoWindowExample extends MapView {
 
     private static String convertImageStreamToString(InputStream is) {
         String result;
@@ -45,7 +45,7 @@ public class InfoWindowSample extends MapView {
     }
 
     private static String getBase64ImageString() {
-        InputStream is = GeocoderSample.class.getResourceAsStream("res/Paris.png");
+        InputStream is = GeocoderExample.class.getResourceAsStream("res/Paris.png");
         return convertImageStreamToString(is);
     }
 
@@ -55,7 +55,7 @@ public class InfoWindowSample extends MapView {
             "</td></tr></table>";
 
 
-    public InfoWindowSample() {
+    public InfoWindowExample() {
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
         setOnMapReadyHandler(new MapReadyHandler() {
@@ -96,9 +96,9 @@ public class InfoWindowSample extends MapView {
     }
 
     public static void main(String[] args) {
-        final InfoWindowSample sample = new InfoWindowSample();
+        final InfoWindowExample sample = new InfoWindowExample();
 
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Info window");
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(sample, BorderLayout.CENTER);

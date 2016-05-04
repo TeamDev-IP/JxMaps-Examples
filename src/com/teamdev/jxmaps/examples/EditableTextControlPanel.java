@@ -4,7 +4,7 @@
  */
 
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 public interface EditableTextControlPanel extends ControlPanel {
     void onTextEntered(String value);

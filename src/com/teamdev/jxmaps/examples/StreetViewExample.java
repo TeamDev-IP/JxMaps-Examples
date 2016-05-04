@@ -4,7 +4,7 @@
  */
 
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.ControlPosition;
 import com.teamdev.jxmaps.LatLng;
@@ -26,8 +26,8 @@ import java.awt.*;
  *
  * @author Vitaly Eremenko
  */
-public class StreetViewSample extends MapView {
-    public StreetViewSample() {
+public class StreetViewExample extends MapView {
+    public StreetViewExample() {
         super(true);
 
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
@@ -79,9 +79,9 @@ public class StreetViewSample extends MapView {
     }
 
     public static void main(String[] args) {
-        final StreetViewSample sample = new StreetViewSample();
+        final StreetViewExample sample = new StreetViewExample();
 
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Street View");
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(sample, BorderLayout.CENTER);

@@ -4,7 +4,7 @@
  */
 
 
-package com.teamdev.jxmaps.samples;
+package com.teamdev.jxmaps.examples;
 
 import com.teamdev.jxmaps.Map;
 import com.teamdev.jxmaps.MapOptions;
@@ -23,8 +23,8 @@ import java.awt.*;
 *
 * @author Vitaly Eremenko
 */
-public class MapSample extends MapView {
-    public MapSample() {
+public class MapExample extends MapView {
+    public MapExample() {
 
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
@@ -55,9 +55,9 @@ public class MapSample extends MapView {
     }
 
     public static void main(String[] args) {
-        MapSample sample = new MapSample();
+        MapExample sample = new MapExample();
 
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Map Integration");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(sample, BorderLayout.CENTER);
         frame.setSize(700, 500);
