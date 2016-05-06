@@ -3,7 +3,6 @@
  * TeamDev PROPRIETARY and CONFIDENTIAL.
  * Use is subject to license terms.
  */
-
 package com.teamdev.jxmaps.demo;
 
 import javax.swing.border.AbstractBorder;
