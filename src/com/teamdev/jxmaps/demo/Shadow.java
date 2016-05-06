@@ -1,7 +1,6 @@
 /*
  * Copyright (c) 2000-2016 TeamDev Ltd. All rights reserved.
- * TeamDev PROPRIETARY and CONFIDENTIAL.
- * Use is subject to license terms.
+ * Use is subject to Apache 2.0 license terms.
  */
 package com.teamdev.jxmaps.demo;
 
