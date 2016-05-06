@@ -3,7 +3,6 @@
  * Use is subject to Apache 2.0 license terms.
  */
 
-
 package com.teamdev.jxmaps.examples;
 
 public interface EditableTextControlPanel extends ControlPanel {
