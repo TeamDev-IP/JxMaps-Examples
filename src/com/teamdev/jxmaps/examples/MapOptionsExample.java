@@ -62,7 +62,7 @@ public class MapOptionsExample extends MapView implements ControlPanel  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Getting current map options
-                MapOptions options = new MapOptions(getMap());
+                MapOptions options = new MapOptions();
                 // Updating visibility of the zoom control
                 options.setZoomControl(defaultUiCheck.isSelected());
                 // Updating visibility of the map type control
@@ -82,7 +82,7 @@ public class MapOptionsExample extends MapView implements ControlPanel  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Getting current map options
-                MapOptions options = new MapOptions(getMap());
+                MapOptions options = new MapOptions();
                 // Updating DisableDoubleClickZoom property value
                 options.setDisableDoubleClickZoom(!dblClickCheck.isSelected());
                 // Applying updated options
@@ -98,7 +98,7 @@ public class MapOptionsExample extends MapView implements ControlPanel  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Getting current map options
-                MapOptions options = new MapOptions(getMap());
+                MapOptions options = new MapOptions();
                 // Updating Draggable property value
                 options.setDraggable(draggingCheck.isSelected());
                 // Applying updated options
@@ -114,7 +114,7 @@ public class MapOptionsExample extends MapView implements ControlPanel  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Getting current map options
-                MapOptions options = new MapOptions(getMap());
+                MapOptions options = new MapOptions();
                 // Updating the ScrollWheel property value
                 options.setScrollWheel(scrollWheelCheck.isSelected());
                 // Applying updated options
@@ -185,23 +185,23 @@ public class MapOptionsExample extends MapView implements ControlPanel  {
 
     private void initMap(Map map) {
         // Creating a map options object
-        MapOptions options = new MapOptions(map);
+        MapOptions options = new MapOptions();
         // Setting visibility of the map type control
         options.setMapTypeControl(true);
         // Setting coordinates of the map center
-        options.setCenter(new LatLng(map, 34.0522342, -118.2436849)); // LA, ca
+        options.setCenter(new LatLng(34.0522342, -118.2436849)); // LA, ca
         // Setting visibility of the map type control
         options.setZoomControl(true);
         // Setting initial zoom value
         options.setZoom(9.0);
         // Creating a map type control options object
-        MapTypeControlOptions controlOptions = new MapTypeControlOptions(map);
+        MapTypeControlOptions controlOptions = new MapTypeControlOptions();
         // Changing position of the map type control
         controlOptions.setPosition(ControlPosition.TOP_RIGHT);
         // Setting the map type control options
         options.setMapTypeControlOptions(controlOptions);
         // Creating a zoom control options object
-        ZoomControlOptions zoomOptions = new ZoomControlOptions(map);
+        ZoomControlOptions zoomOptions = new ZoomControlOptions();
         // Changing position of the zoom control
         zoomOptions.setPosition(ControlPosition.LEFT_CENTER);
         // Changing the style of the zoom control

@@ -37,9 +37,9 @@ public class MarkersExample extends MapView {
                     // Getting the associated map object
                     final Map map = getMap();
                     // Creating a map options object
-                    MapOptions options = new MapOptions(map);
+                    MapOptions options = new MapOptions();
                     // Creating a map type control options object
-                    MapTypeControlOptions controlOptions = new MapTypeControlOptions(map);
+                    MapTypeControlOptions controlOptions = new MapTypeControlOptions();
                     // Changing position of the map type control
                     controlOptions.setPosition(ControlPosition.TOP_RIGHT);
                     // Setting map type control options
@@ -47,7 +47,7 @@ public class MarkersExample extends MapView {
                     // Setting map options
                     map.setOptions(options);
                     // Setting the map center
-                    map.setCenter(new LatLng(map, 41.3850639, 2.1734034999999494));
+                    map.setCenter(new LatLng(41.3850639, 2.1734034999999494));
                     // Setting initial zoom value
                     map.setZoom(9.0);
                     // Creating a new marker object

@@ -66,13 +66,13 @@ public class InfoWindowExample extends MapView {
                     // Getting the associated map object
                     final Map map = getMap();
                     // Setting the map center
-                    map.setCenter(new LatLng(map, 48.856614, 2.3522219000000177));
+                    map.setCenter(new LatLng(48.856614, 2.3522219000000177));
                     // Setting initial zoom value
                     map.setZoom(7.0);
                     // Creating a map options object
-                    MapOptions options = new MapOptions(map);
+                    MapOptions options = new MapOptions();
                     // Creating a map type control options object
-                    MapTypeControlOptions controlOptions = new MapTypeControlOptions(map);
+                    MapTypeControlOptions controlOptions = new MapTypeControlOptions();
                     // Changing position of the map type control
                     controlOptions.setPosition(ControlPosition.TOP_RIGHT);
                     // Setting map type control options

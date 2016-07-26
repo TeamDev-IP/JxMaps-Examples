@@ -35,9 +35,9 @@ public class PolylineExample extends MapView {
                     // Getting the associated map object
                     final Map map = getMap();
                     // Creating a map options object
-                    MapOptions mapOptions = new MapOptions(map);
+                    MapOptions mapOptions = new MapOptions();
                     // Creating a map type control options object
-                    MapTypeControlOptions controlOptions = new MapTypeControlOptions(map);
+                    MapTypeControlOptions controlOptions = new MapTypeControlOptions();
                     // Changing position of the map type control
                     controlOptions.setPosition(ControlPosition.TOP_RIGHT);
                     // Setting map type control options
@@ -45,20 +45,20 @@ public class PolylineExample extends MapView {
                     // Setting map options
                     map.setOptions(mapOptions);
                     // Setting the map center
-                    map.setCenter(new LatLng(map, 0, -180));
+                    map.setCenter(new LatLng(0, -180));
                     // Setting initial zoom value
                     map.setZoom(3.0);
                     // Creating a path (array of coordinates) that represents a polyline
-                    LatLng[] path = {new LatLng(map, 37.772, -122.214),
-                            new LatLng(map, 21.291, -157.821),
-                            new LatLng(map, -18.142, 178.431),
-                            new LatLng(map, -27.467, 153.027)};
+                    LatLng[] path = {new LatLng(37.772, -122.214),
+                            new LatLng(21.291, -157.821),
+                            new LatLng(-18.142, 178.431),
+                            new LatLng(-27.467, 153.027)};
                     // Creating a new polyline object
                     Polyline polyline = new Polyline(map);
                     // Initializing the polyline with created path
                     polyline.setPath(path);
                     // Creating a polyline options object
-                    PolylineOptions options = new PolylineOptions(map);
+                    PolylineOptions options = new PolylineOptions();
                     // Setting geodesic property value
                     options.setGeodesic(true);
                     // Setting stroke color value

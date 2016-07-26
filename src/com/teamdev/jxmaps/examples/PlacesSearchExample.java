@@ -147,7 +147,7 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
             // Checking if placeId value is set
             if (placeId != null) {
                 // Creating place details request
-                PlaceDetailsRequest request = new PlaceDetailsRequest(map);
+                PlaceDetailsRequest request = new PlaceDetailsRequest();
                 // Setting placeId to search request
                 request.setPlaceId(placeId);
                 // Requesting details for the place by provided placeId
@@ -177,7 +177,7 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
             textContent += "<p>" + result.getFormattedAddress() + "</p>";
 
             // Creating a photo options object
-            PhotoOptions option = new PhotoOptions(map);
+            PhotoOptions option = new PhotoOptions();
             // Setting maximum photo height
             option.setMaxHeight(64);
             // Setting maximum photo width
@@ -198,10 +198,10 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
         }
 
         public void setIcons(String normalIcon, String hoverIcon) {
-            this.normalIcon = new Icon(map);
+            this.normalIcon = new Icon();
             this.normalIcon.setUrl(normalIcon);;
 
-            this.hoverIcon = new Icon(map);
+            this.hoverIcon = new Icon();
             this.hoverIcon.setUrl(hoverIcon);
 
             setIcon(this.normalIcon);
@@ -364,7 +364,7 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
         // Getting the associated map object
         final Map map = getMap();
         // Creating places search request
-        final PlaceSearchRequest request = new PlaceSearchRequest(map);
+        final PlaceSearchRequest request = new PlaceSearchRequest();
         // Setting start point for places search
         request.setLocation(map.getCenter());
         // Setting radius for places search
@@ -435,7 +435,7 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
         final Map map = getMap();
 
         // Creating geocoder request
-        GeocoderRequest request = new GeocoderRequest(map);
+        GeocoderRequest request = new GeocoderRequest();
         // Set address for request
         request.setAddress(address);
         // Geocoding a position by address
@@ -476,9 +476,9 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
         // Getting the associated map object
         final Map map = getMap();
         // Creating a map options object
-        MapOptions options = new MapOptions(map);
+        MapOptions options = new MapOptions();
         // Creating a map type control options object
-        MapTypeControlOptions controlOptions = new MapTypeControlOptions(map);
+        MapTypeControlOptions controlOptions = new MapTypeControlOptions();
         // Changing position of the map type control
         controlOptions.setPosition(ControlPosition.TOP_RIGHT);
         // Setting map type control options

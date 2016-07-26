@@ -50,14 +50,14 @@ public class StyledMapExample extends MapView {
     private StyledMapType createStyledMap(Map map, String name, String hue) {
 
         // Creating a map type style object for all elements
-        MapTypeStyle style = new MapTypeStyle(map);
+        MapTypeStyle style = new MapTypeStyle();
         // Styling will be applied to all elements
         style.setElementType(MapTypeStyleElementType.ALL);
         // Styling will be applied to all features
         style.setFeatureType(MapTypeStyleFeatureType.ALL);
 
         // Creating a map type styler object
-        MapTypeStyler styler = new MapTypeStyler(map);
+        MapTypeStyler styler = new MapTypeStyler();
 
         // Setting a new hue value for the map types styler object
         styler.setHue(hue);
@@ -74,14 +74,14 @@ public class StyledMapExample extends MapView {
         style.setStylers(new MapTypeStyler[]{styler});
 
         // Creating a map type style object for roads
-        MapTypeStyle roadStyle = new MapTypeStyle(map);
+        MapTypeStyle roadStyle = new MapTypeStyle();
         // Styling will be applied to geometry elements
         roadStyle.setElementType(MapTypeStyleElementType.GEOMETRY);
         // Styling will be applied to roads
         roadStyle.setFeatureType(MapTypeStyleFeatureType.ROAD);
 
         // Creating a road styler
-        MapTypeStyler roadStyler = new MapTypeStyler(map);
+        MapTypeStyler roadStyler = new MapTypeStyler();
         // Setting a new lightness value the road styler object
         roadStyler.setLightness(100);
         // Setting a new visibility type value the road styler object
@@ -102,9 +102,9 @@ public class StyledMapExample extends MapView {
 
     private void initMap(Map map) {
         // Creating a map options object
-        MapOptions options = new MapOptions(map);
+        MapOptions options = new MapOptions();
         // Creating a map type control options object
-        MapTypeControlOptions mapTypeOptions = new MapTypeControlOptions(map);
+        MapTypeControlOptions mapTypeOptions = new MapTypeControlOptions();
         // Changing position of the map type control
         mapTypeOptions.setPosition(ControlPosition.TOP_RIGHT);
         //Creation of a pink styled map object
@@ -116,7 +116,7 @@ public class StyledMapExample extends MapView {
         // Setting the map type control options
         options.setMapTypeControlOptions(mapTypeOptions);
         // Setting the map center
-        options.setCenter(new LatLng(map, 41.9027835, 12.496365500000024));
+        options.setCenter(new LatLng(41.9027835, 12.496365500000024));
         // Setting initial zoom value
         options.setZoom(11.0);
 

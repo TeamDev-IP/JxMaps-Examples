@@ -45,15 +45,15 @@ public class ElevationExample extends MapView {
                     // Getting the associated map object
                     final Map map = getMap();
                     // Setting the map center
-                    map.setCenter(new LatLng(map, 60.85026, -147.57934999999998));
+                    map.setCenter(new LatLng(60.85026, -147.57934999999998));
                     // Setting initial zoom value
                     map.setZoom(7.0);
                     // Setting initial map type
                     map.setMapTypeId(MapTypeId.HYBRID);
                     // Creating a map options object
-                    MapOptions options = new MapOptions(map);
+                    MapOptions options = new MapOptions();
                     // Creating a map type control options object
-                    MapTypeControlOptions controlOptions = new MapTypeControlOptions(map);
+                    MapTypeControlOptions controlOptions = new MapTypeControlOptions();
                     // Changing position of the map type control
                     controlOptions.setPosition(ControlPosition.TOP_RIGHT);
                     // Setting map type control options
@@ -86,7 +86,7 @@ public class ElevationExample extends MapView {
         }
 
         // Creating an elevation request
-        LocationElevationRequest request = new LocationElevationRequest(map);
+        LocationElevationRequest request = new LocationElevationRequest();
         LatLng[] locations = {latLng};
         // Setting location to the elevation request
         request.setLocations(locations);
