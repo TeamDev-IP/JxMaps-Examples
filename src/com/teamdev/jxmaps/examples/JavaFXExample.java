@@ -26,6 +26,11 @@ import javafx.stage.Stage;
  * @author Vitaly Eremenko
  */
 public class JavaFXExample extends Application {
+    @Override
+    public void init() throws Exception {
+        // Initializing of JavaFX engine
+        MapView.InitJavaFX();
+    }
 
     @Override
     public void start(final Stage primaryStage) {
