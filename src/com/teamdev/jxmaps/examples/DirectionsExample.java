@@ -58,13 +58,13 @@ public class DirectionsExample extends MapView implements ControlPanel {
                     // Getting the associated map object
                     final Map map = getMap();
                     // Setting the map center
-                    map.setCenter(new LatLng(map, 41.85, -87.65));
+                    map.setCenter(new LatLng(41.85, -87.65));
                     // Setting initial zoom value
                     map.setZoom(7.0);
                     // Creating a map options object
-                    MapOptions options = new MapOptions(map);
+                    MapOptions options = new MapOptions();
                     // Creating a map type control options object
-                    MapTypeControlOptions controlOptions = new MapTypeControlOptions(map);
+                    MapTypeControlOptions controlOptions = new MapTypeControlOptions();
                     // Changing position of the map type control
                     controlOptions.setPosition(ControlPosition.TOP_RIGHT);
                     // Setting map type control options
@@ -176,7 +176,7 @@ public class DirectionsExample extends MapView implements ControlPanel {
         // Getting the associated map object
         final Map map = getMap();
         // Creating a directions request
-        DirectionsRequest request = new DirectionsRequest(map);
+        DirectionsRequest request = new DirectionsRequest();
         // Setting of the origin location to the request
         request.setOriginString(fromField.getText());
         // Setting of the destination location to the request
@@ -184,7 +184,7 @@ public class DirectionsExample extends MapView implements ControlPanel {
         // Setting of the travel mode
         request.setTravelMode(TravelMode.DRIVING);
         // Calculating the route between locations
-        getServices().getDirectionService().route(request, new DirectionsRouteCallback(map) {
+        getServices().getDirectionService().route(request, new DirectionsRouteCallback() {
             @Override
             public void onRoute(DirectionsResult result, DirectionsStatus status) {
                 // Checking of the operation status
