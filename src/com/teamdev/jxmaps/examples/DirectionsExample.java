@@ -184,7 +184,7 @@ public class DirectionsExample extends MapView implements ControlPanel {
         // Setting of the travel mode
         request.setTravelMode(TravelMode.DRIVING);
         // Calculating the route between locations
-        getServices().getDirectionService().route(request, new DirectionsRouteCallback() {
+        getServices().getDirectionService().route(request, new DirectionsRouteCallback(map) {
             @Override
             public void onRoute(DirectionsResult result, DirectionsStatus status) {
                 // Checking of the operation status
