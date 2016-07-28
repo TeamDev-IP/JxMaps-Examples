@@ -27,7 +27,7 @@ class AboutPanel extends JPanel implements ControlPanel {
                 "Powered by <font color=\"#3d82f8\"><a href=\"https://www.teamdev.com/jxmaps\" style=\"text-decoration:none\">JxMaps</a>. <a href=\"https://www.teamdev.com/jxmaps-licence-agreement\" style=\"text-decoration:none\">See terms of use.</a></font><br>" +
                 "Created using <font color=\"#3d82f8\"><a href=\"https://developers.google.com/maps/terms\" style=\"text-decoration:none\">Google Maps JavaScript API.</a></font><br>" +
                 "Based on <font color=\"#3d82f8\"><a href=\"http://www.chromium.org/\" style=\"text-decoration:none\">Chromium project</a></font>. See <font color=\"#3d82f8\"><a href=\"http://jxmaps-support.teamdev.com/documentation/open-source-components\" style=\"text-decoration:none\">full list</a></font> of Chromium<br>components, used in the current JxMaps version.<br>"+
-                "This demo uses <font color=\"#3d82f8\"><a href=\"https://www.google.com/fonts/specimen/Roboto\" style=\"text-decoration:none\">WebKit</a></font> project under LGPL. </font><br>" +
+                "This demo uses <font color=\"#3d82f8\"><a href=\"https://webkit.org\" style=\"text-decoration:none\">WebKit</a></font> project under LGPL.<br>" +
                 "This demo uses <font color=\"#3d82f8\"><a href=\"https://www.google.com/fonts/specimen/Roboto\" style=\"text-decoration:none\">Roboto</a></font> font, distributed under <font color=\"#3d82f8\"><a href=\"http://www.apache.org/licenses/LICENSE-2.0.html\" style=\"text-decoration:none\">Apache 2.0</a></font><br>licence, and <font color=\"#3d82f8\"><a href=\"https://design.google.com/icons/\" style=\"text-decoration:none\">Material icons.</a></font><br>" +
                 "</font><</html>");
 
