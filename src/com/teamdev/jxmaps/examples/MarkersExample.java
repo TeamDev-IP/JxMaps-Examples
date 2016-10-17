@@ -57,7 +57,7 @@ public class MarkersExample extends MapView {
                     // Creating info window, that will be initially displayed on the marker
                     final InfoWindow infoWindow = new InfoWindow(map);
                     // Setting info window text
-                    infoWindow.setContent("Sample marker. Click on the map to add more markers.");
+                    infoWindow.setContent("Sample marker. Click on the map to add more markers. Click on the marker to remove it.");
                     // Showing info windows under the marker
                     infoWindow.open(map, marker);
                     // Adding event listener that intercepts clicking on map
@@ -67,9 +67,18 @@ public class MarkersExample extends MapView {
                             // Closing initially created info window
                             infoWindow.close();
                             // Creating a new marker
-                            Marker marker = new Marker(map);
+                            final Marker marker = new Marker(map);
                             // Move marker to the position where user clicked
                             marker.setPosition(mouseEvent.latLng());
+
+                            // Adding event listener that intercepts clicking on marker
+                            marker.addEventListener("click", new MapMouseEvent() {
+                                @Override
+                                public void onEvent(MouseEvent mouseEvent) {
+                                    // Removing marker from the map
+                                    marker.remove();
+                                }
+                            });
                         }
                     });
                 }

@@ -62,34 +62,12 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
 
     private final boolean standalone;
 
-    private static String convertImageStreamToString(InputStream is) {
-        String result;
-        try {
-            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-            int nRead;
-            byte[] data = new byte[10240];
-            while ((nRead = is.read(data, 0, data.length)) != -1) {
-                buffer.write(data, 0, nRead);
-            }
-            buffer.flush();
-            result = "data:image/png;base64," + DatatypeConverter.printBase64Binary(buffer.toByteArray());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return result;
-    }
-
-    private static String getBase64ImageString(String imageName) {
-        InputStream is = PlacesSearchExample.class.getResourceAsStream("res/" + imageName);
-        return convertImageStreamToString(is);
-    }
-
-    static final String restarantIcon = getBase64ImageString("restaurants_for_map.png");
-    static final String barIcon = getBase64ImageString("bars_and_pubs_for_map.png");
-    static final String hotelIcon = getBase64ImageString("hotels_for_map.png");
-    static final String restarantIconHover = getBase64ImageString("restaurants_for_map.png");
-    static final String barIconHover = getBase64ImageString("bars_and_pubs_for_map.png");
-    static final String hotelIconHover = getBase64ImageString("hotels_for_map.png");
+       static final Icon restarantIcon = new Icon();
+    static final Icon barIcon = new Icon();
+    static final Icon hotelIcon = new Icon();
+    static final Icon restarantIconHover = new Icon();
+    static final Icon barIconHover = new Icon();
+    static final Icon hotelIconHover = new Icon();
 
     private OptionsWindow optionsWindow;
     private JTextField addressEdit;
@@ -197,12 +175,9 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
             return textContent;
         }
 
-        public void setIcons(String normalIcon, String hoverIcon) {
-            this.normalIcon = new Icon();
-            this.normalIcon.setUrl(normalIcon);;
-
-            this.hoverIcon = new Icon();
-            this.hoverIcon.setUrl(hoverIcon);
+        public void setIcons(Icon normalIcon, Icon hoverIcon) {
+            this.normalIcon = normalIcon;
+            this.hoverIcon = hoverIcon;
 
             setIcon(this.normalIcon);
         }
@@ -215,6 +190,13 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
     public PlacesSearchExample(boolean standalone) {
         super(mapOptions);
         this.standalone = standalone;
+
+        restarantIcon.loadFromStream(PlacesSearchExample.class.getResourceAsStream("res/restaurants_for_map.png"), "png");
+        barIcon.loadFromStream(PlacesSearchExample.class.getResourceAsStream("res/bars_and_pubs_for_map.png"), "png");
+        hotelIcon.loadFromStream(PlacesSearchExample.class.getResourceAsStream("res/hotels_for_map.png"), "png");
+        restarantIconHover.loadFromStream(PlacesSearchExample.class.getResourceAsStream("res/restaurants_for_map.png"), "png");
+        barIconHover.loadFromStream(PlacesSearchExample.class.getResourceAsStream("res/bars_and_pubs_for_map.png"), "png");
+        hotelIconHover.loadFromStream(PlacesSearchExample.class.getResourceAsStream("res/hotels_for_map.png"), "png");
 
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.
@@ -372,7 +354,7 @@ public class PlacesSearchExample extends MapView implements EditableTextControlP
 
         final int imageType = placesList.getSelectedIndex();
 
-        final String iconUrl[] = new String[2];
+        final Icon iconUrl[] = new Icon[2];
 
         switch (imageType) {
             case 0:
