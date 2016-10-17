@@ -85,9 +85,9 @@ public class JxMapsDemo implements MenuListener {
 
     static {
         try {
-            //initEnvironment();
+            initEnvironment();
         } catch (Exception e) {
-            e.printStackTrace();
+      //      e.printStackTrace();
         }
     }
 

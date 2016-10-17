@@ -53,8 +53,10 @@ class PopupMenu {
         parentWindow.getContentPane().addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                menuOptionsWindow.setSize(MENU_WIDTH, controlPanel.getPreferredHeight());
-                menuOptionsWindow.getContentPane().revalidate();
+                if (controlPanel != null) {
+                    menuOptionsWindow.setSize(MENU_WIDTH, controlPanel.getPreferredHeight());
+                    menuOptionsWindow.getContentPane().revalidate();
+                }
             }
         });
 
