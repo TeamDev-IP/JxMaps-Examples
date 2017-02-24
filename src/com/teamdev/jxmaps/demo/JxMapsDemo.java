@@ -62,6 +62,7 @@ public class JxMapsDemo implements MenuListener {
                 new SampleDescriptor("ic_places_sample", "Places Search", "Find places near a given point.", PlacesSearchExample.class),
                 new SampleDescriptor("ic_polygon_sample", "Polygon", "Draw polygons on the map.", PolygonExample.class),
                 new SampleDescriptor("ic_polyline_sample", "Polyline", "Draw a custom route on the map.", PolylineExample.class),
+                new SampleDescriptor("ic_traffic_sample", "Traffic Layer", "Display information about traffic on the map.", TrafficLayerExample.class),
                 new SampleDescriptor("ic_events_sample", "Events", "The pane shows you events that are triggered when you interact with the map.", EventsExample.class),
         };
 

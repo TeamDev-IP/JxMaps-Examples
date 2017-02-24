@@ -26,7 +26,6 @@ import java.awt.*;
  */
 public class StreetViewExample extends MapView {
     public StreetViewExample() {
-        super(true);
 
         // Setting of a ready handler to MapView object. onMapReady will be called when map initialization is done and
         // the map object is ready to use. Current implementation of onMapReady customizes the map object.

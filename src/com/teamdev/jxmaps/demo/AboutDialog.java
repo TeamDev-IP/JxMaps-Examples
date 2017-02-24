@@ -23,7 +23,7 @@ class AboutDialog extends JDialog{
 
     public static void initHandler(Component frame) {
         parentFrame = frame;
-        com.apple.eawt.Application.getApplication().setDockIconImage(Toolkit.getDefaultToolkit().getImage(SampleDescriptor.class.getResource("res/jxmaps32x32.png")));
+        com.apple.eawt.Application.getApplication().setDockIconImage(Toolkit.getDefaultToolkit().getImage(SampleDescriptor.class.getResource("res/jxmaps256x256.png")));
         com.apple.eawt.Application.getApplication().setAboutHandler(new com.apple.eawt.AboutHandler() {
             @Override
             public void handleAbout(com.apple.eawt.AppEvent.AboutEvent aboutEvent) {
