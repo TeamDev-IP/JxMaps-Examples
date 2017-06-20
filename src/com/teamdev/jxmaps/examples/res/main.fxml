@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.teamdev.jxmaps.javafx.MapView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:controller="com.teamdev.jxmaps.examples.MapViewFXControl" xmlns:fx="http://javafx.com/fxml">
+    <center>
+        <MapView fx:id="mapView"/>
+    </center>
+</BorderPane>
